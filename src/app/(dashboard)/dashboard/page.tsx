@@ -15,12 +15,15 @@ import {
     UsersIcon,
 } from '@/components/ui/Icons';
 
+// Extended type for splits with nested expense data
+type SplitWithExpense = ExpenseSplit & { expenses?: Expense };
+
 export default function DashboardPage() {
     const { profile, house, member, members } = useAuth();
     const supabase = createClient();
 
     const [expenses, setExpenses] = useState<Expense[]>([]);
-    const [splits, setSplits] = useState<ExpenseSplit[]>([]);
+    const [splits, setSplits] = useState<SplitWithExpense[]>([]);
     const [inventory, setInventory] = useState<InventoryItem[]>([]);
     const [tasks, setTasks] = useState<Task[]>([]);
     const [visitors, setVisitors] = useState<Visitor[]>([]);
